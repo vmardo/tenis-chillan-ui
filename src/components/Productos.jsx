@@ -6,13 +6,18 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+// Para recibir la propiedad el componente hijo.Se debe destructurar todas las propiedades que en envien para aca.
+// Se abre llaves y se coloca el nombre tal como lo escribi.Ese nombre fue arbitrario (puede ser cualquier)
+export function Productos({producto}) {
 
-export function Productos() {
+  // producto es el objeto completo y nos falta hacer una desuctruracion mas,queremos las propiedades individuales.
+  const {nombre, url_imagen,precio_anterior,precio_actual,descripcion} = producto;
+
   return (
     <Card className="w-96">
       <CardHeader shadow={false} floated={false} className="h-96">
         <img
-          src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+          src= {url_imagen}
           alt="card-image"
           className="h-full w-full object-cover"
         />
@@ -20,14 +25,14 @@ export function Productos() {
       <CardBody>
         <div className="mb-2 flex items-center justify-between">
           <Typography color="blue-gray" className="font-medium">
-            Apple AirPods
+            {nombre}
           </Typography>
           <div className="flex gap-4">
             <Typography color="blue-gray" className="font-medium line-through">
-              $95.00
+              ${precio_anterior}
             </Typography>
             <Typography color="blue-gray" className="font-medium">
-              $95.00
+              ${precio_actual}
             </Typography>
           </div>
         </div>
@@ -37,8 +42,7 @@ export function Productos() {
           color="gray"
           className="font-normal opacity-75"
         >
-          With plenty of talk and listen time, voice-activated Siri access, and
-          an available wireless charging case.
+          {descripcion}
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">
