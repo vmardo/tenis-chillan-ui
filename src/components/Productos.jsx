@@ -12,6 +12,8 @@ export function Productos({producto}) {
 
   // producto es el objeto completo y nos falta hacer una desuctruracion mas,queremos las propiedades individuales.
   const {nombre, url_imagen,precio_anterior,precio_actual,descripcion} = producto;
+  
+  
 
   return (
     <Card className="w-96">
@@ -51,7 +53,7 @@ export function Productos({producto}) {
           fullWidth={true}
           className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
         >
-          Add to Cart
+          Añadir al Carro
         </Button>
       </CardFooter>
     </Card>
