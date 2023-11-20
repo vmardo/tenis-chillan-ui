@@ -1,5 +1,7 @@
 import { Productos } from '../../components/Productos';
 import { useState, useEffect } from 'react' //useState --> maneja la respuesta de la base de datos
+import { Typography } from '@material-tailwind/react';
+import { Link } from 'react-router-dom';
                                             
 //useEffect--->de enterarse que al momento cargue el componete se haga la consulta
 //creamos la consulta para la base de datos.Para ir ha buscar todas las raquetas
@@ -132,19 +134,22 @@ function Raquetas() {
   const nombres = raquetas.map(raqueta => raqueta.nombre)
 
   return (
-    <div>
-      <h1>Raquetas</h1>
+    <div className='container px-12 mx-auto'>
+      <Typography  variant="h1" color= "blue-gray" className="text-2xl my-5" >
+            Raquetas
+      </Typography>
 
+    <div className='grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
       {
 
         raquetas.map(raqueta => (
-
+          <Link to="/productos/detalle" state={{producto:raqueta}}>
           <Productos producto = {raqueta} />
-        
+          </Link>
         ))
 
       }
-      
+    </div>
       
     
     </div>

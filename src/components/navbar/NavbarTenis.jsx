@@ -13,88 +13,28 @@ import {
   MenuItem,
 } from "@material-tailwind/react";
 import {
-  ChevronDownIcon,
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import {
-  Bars4Icon,
-  GlobeAmericasIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  RectangleGroupIcon,
-  SquaresPlusIcon,
-  SunIcon,
-  TagIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/solid";
-
-const navListMenuItems = [
-  {
-    title: "Products",
-    description: "Find the perfect solution for your needs.",
-    icon: SquaresPlusIcon,
-  },
-
-];
-
-function NavListMenu() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-
-
-  return (
-    <React.Fragment>
-      <Menu
-        open={isMenuOpen}
-        handler={setIsMenuOpen}
-        offset={{ mainAxis: 20 }}
-        placement="bottom"
-        allowHover={true}
-      >
-        <MenuHandler>
-          <Typography as="div" variant="small" className="font-medium">
-            <ListItem
-              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
-              selected={isMenuOpen || isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen((cur) => !cur)}
-            >
-              Resources
-              <ChevronDownIcon
-                strokeWidth={2.5}
-                className={`hidden h-3 w-3 transition-transform lg:block ${
-                  isMenuOpen ? "rotate-180" : ""
-                }`}
-              />
-              <ChevronDownIcon
-                strokeWidth={2.5}
-                className={`block h-3 w-3 transition-transform lg:hidden ${
-                  isMobileMenuOpen ? "rotate-180" : ""
-                }`}
-              />
-            </ListItem>
-          </Typography>
-        </MenuHandler>
-        <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
-          <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
-          </ul>
-        </MenuList>
-      </Menu>
-      <div className="block lg:hidden">
-      </div>
-    </React.Fragment>
-  );
-}
-
+import {NavLink}from "react-router-dom"
 function NavList() {
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
-      
+        <NavLink to="productos/pelotas">
         <ListItem className="flex items-center gap-2 py-2 pr-4 text-sm w-auto">Pelotas</ListItem>
-        <ListItem className="flex items-center gap-2 py-2 pr-4 text-sm w-auto">Tenis</ListItem>
+        </NavLink>
+
+        <NavLink to="productos/raquetas">
+        <ListItem className="flex items-center gap-2 py-2 pr-4 text-sm w-auto">Raquetas</ListItem>
+        </NavLink>
+
+        <NavLink to="productos/accesorio">
         <ListItem className="flex items-center gap-2 py-2 pr-4 text-sm w-auto">Accesorio</ListItem>
+        </NavLink>
+
+        <NavLink to="productos/ropa">
         <ListItem className="flex items-center gap-2 py-2 pr-4 text-sm w-auto">Ropa</ListItem>
-     
+        </NavLink>
       {/*<Typography
         as="a"
         href="#"
@@ -123,6 +63,7 @@ export function NavbarTenis() {
   return (
     <Navbar className="mx-auto max-w-screen-xl px-4 py-2 ">
       <div className="flex items-center justify-between text-blue-gray-900">
+        <NavLink to="/">
         <Typography
           as="a"
           href="#"
@@ -131,6 +72,7 @@ export function NavbarTenis() {
         >
           Tenis Store
         </Typography>
+        </NavLink>
         <div className="hidden lg:block">
           <NavList />
         </div>

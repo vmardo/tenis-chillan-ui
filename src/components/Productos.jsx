@@ -16,7 +16,7 @@ export function Productos({producto}) {
   
 
   return (
-    <Card className="w-96">
+    <Card className="w-80 flex-col justify-between">
       <CardHeader shadow={false} floated={false} className="h-96">
         <img
           src= {url_imagen}
