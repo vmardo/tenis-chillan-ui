@@ -82,9 +82,13 @@ export function NavbarTenis() {
             login
           </Button>
           </NavLink>
+
+          <NavLink to="/registro">
           <Button variant="gradient" size="sm">
             Registro
           </Button>
+          </NavLink>
+
         </div>
         <IconButton
           variant="text"
@@ -102,13 +106,20 @@ export function NavbarTenis() {
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
+
+          <NavLink to="/login">
           <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
             login
           </Button>
+          </NavLink>
+
+          <NavLink to="/registro">
           <Button variant="gradient" size="sm" fullWidth>
             Registro
           </Button>
+          </NavLink>
         </div>
+
       </Collapse>
     </Navbar>
   );
