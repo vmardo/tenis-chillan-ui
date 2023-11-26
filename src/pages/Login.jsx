@@ -5,8 +5,24 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
  
 export function Login() {
+//creamos dos useState para manejar dos campos de login
+  const [correo, setCorreo] = useState("");
+  const [password, setPassword] = useState("");
+
+//creamos un funcion para manejar el evento onSubmit
+
+const loginUsuario = (e) => {
+  e.preventDefault();
+  console.log ("logenado usuario")
+  console.log ("correo:correo")
+  console.log ("password:password")
+}
+
+
+
   return (
      <Card color="transparent" shadow={false} className="mt-6">
       <Typography variant="h4" color="blue-gray">
@@ -15,13 +31,14 @@ export function Login() {
       <Typography color="gray" className="mt-1 font-normal">
        Ingresa tus datos para iniciar sesion
       </Typography>
-      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={loginUsuario}>
         <div className="mb-1 flex flex-col gap-6">
          
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Tu correo
           </Typography>
           <Input
+            onChange={(e) => setCorreo(e.target.value)}
             size="lg"
             placeholder="name@mail.com"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -33,6 +50,7 @@ export function Login() {
             Contraseña
           </Typography>
           <Input
+            onChange={(e) => setPassword(e.target.value)}
             type="text"
             size="lg"
             placeholder="********"
@@ -43,7 +61,7 @@ export function Login() {
           />
         </div>
        
-        <Button className="mt-6" fullWidth>
+        <Button className="mt-6" fullWidth type="submit">
           Iniciar sesion
         </Button>
         <Typography color="gray" className="mt-4 text-center font-normal">
