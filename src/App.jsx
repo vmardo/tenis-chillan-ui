@@ -12,6 +12,7 @@ function App() {
   return (
     <Router>
       <NavbarTenis/>
+      <div className="flex justify-center">
       <Routes>
        <Route path="/" element= {<Home/>} />
        <Route path="/login" element= {<Login/>} />
@@ -19,9 +20,9 @@ function App() {
        <Route path="/productos/Pelotas" element= {<Pelotas/>} />
        <Route path="/productos/Raquetas" element= {<Raquetas/>} />
        <Route path="/productos/detalle" element= {<ProductoDetalle/>} />
-
-      </Routes>
       
+      </Routes>
+      </div>
     </Router>
   )
 }
