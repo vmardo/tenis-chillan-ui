@@ -28,8 +28,8 @@ function NavList() {
         <ListItem className="flex items-center gap-2 py-2 pr-4 text-sm w-auto">Raquetas</ListItem>
         </NavLink>
 
-        <NavLink to="productos/accesorio">
-        <ListItem className="flex items-center gap-2 py-2 pr-4 text-sm w-auto">Accesorio</ListItem>
+        <NavLink to="productos/accesorios">
+        <ListItem className="flex items-center gap-2 py-2 pr-4 text-sm w-auto">Accesorios</ListItem>
         </NavLink>
 
         <NavLink to="productos/ropa">
