@@ -8,6 +8,7 @@ import Pedido from "./components/Pedido"
 import Pelotas from "./pages/productos/Pelotas"
 import Raquetas from "./pages/productos/Raquetas"
 import Accesorios from "./pages/productos/Accesorios"
+import Ropa from "./pages/productos/Ropa"
 import ProductoDetalle from "./pages/productos/ProductoDetalle"
 
 
@@ -26,6 +27,7 @@ function App() {
        <Route path="/productos/Pelotas" element= {<Pelotas/>} />
        <Route path="/productos/Raquetas" element= {<Raquetas/>} />
        <Route path="/productos/Accesorios" element= {<Accesorios/>} />
+       <Route path="/productos/Ropa" element= {<Ropa/>} />
        <Route path="/productos/detalle" element= {<ProductoDetalle/>} />
       
       </Routes>
