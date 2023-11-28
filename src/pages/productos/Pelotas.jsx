@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Productos } from "../../components/Productos"
 import { Typography } from "@material-tailwind/react";
 function Pelotas() {
@@ -81,9 +82,9 @@ function Pelotas() {
      {
       
        pelotas.map(pelota => (
-
+        <Link to="/productos/detalle" state={{producto:pelota}} >
        <Productos producto= {pelota}/>
-
+       </Link>
        ))
 
      }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Productos } from "../../components/Productos";
 import { Typography } from "@material-tailwind/react";
 
@@ -100,9 +101,9 @@ function Accesorios() {
      {
       
        accesorios.map(accesorio => (
-
+        <Link to="/productos/detalle" state={{producto:accesorio}}>
        <Productos producto= {accesorio}/>
-
+       </Link>
        ))
 
      }
