@@ -18,7 +18,7 @@ import Pedido from "../../components/Pedido";
  function Perfil() {
   const data = [
     {
-      label: "Pedidios",
+      label: "Pedidos",
       value: "pedido",
       icon: Square3Stack3DIcon,
      
