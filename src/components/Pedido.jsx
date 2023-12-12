@@ -23,27 +23,30 @@ function Pedido() {
   ]
 
   return (
-    <Card className="w-4/5">
+    <Card className="" >
       <List>
 
         {
           pedidos.map(pedido => (
             <ListItem key={pedido.numeroPedido}>
-
-              <Typography variant="p" color="blue-gray" className="my-5 font-bold"  >
+              <div className="flex flex-col ">
+              <Typography variant="p" color="blue-gray" className="font-bold"  >
                 {pedido.fecha} | ${pedido.total}
               </Typography>
-              <Typography variant="p" color="blue-gray" className="my-5 "  >
+              <Typography variant="p" color="blue-gray" className=""  >
                 Numero de pedido : {pedido.numeroPedido}
               </Typography>
-
+              <div className="flex mt-5">
               {
                 pedido.imagenes.map(imagen => (
         
-                    <Avatar src={imagen} alt="avatar" variant="square" />
+                    <Avatar src={imagen} alt="avatar" variant="square" className="border border-gray-400 mr-2 " />
 
                 ))
               }
+              </div>
+              </div>
+              
 
 
 
