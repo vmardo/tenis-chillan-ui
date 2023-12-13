@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <NavbarTenis/>
-      <div className="flex justify-center pt-6">
+      {/* <div className="flex justify-center pt-6"> */}
       <Routes>
        <Route path="/" element= {<Home/>} />
        <Route path="/login" element= {<Login/>} />
@@ -31,7 +31,7 @@ function App() {
        <Route path="/productos/detalle" element= {<ProductoDetalle/>} />
       
       </Routes>
-      </div>
+      {/* </div> */}
     </Router>
   )
 }
