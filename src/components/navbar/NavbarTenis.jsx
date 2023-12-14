@@ -89,6 +89,8 @@ export function NavbarTenis() {
         <div className="hidden lg:block">
           <NavList />
         </div>
+
+        
         {
           user ? 
           <NavLink to="/perfil">
