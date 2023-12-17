@@ -140,15 +140,15 @@ function Raquetas() {
       </Typography>
 
     <div className='grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-      {
+    {
 
-        raquetas.map(raqueta => (
-          <Link to="/productos/detalle" state={{producto:raqueta}}>
-          <Productos producto = {raqueta} />
-          </Link>
-        ))
+raquetas.map(raqueta => (
+  <Link to="/productos/detalle" state={{producto:raqueta}}>
+  <Productos producto = {raqueta} />
+  </Link>
+))
 
-      }
+}
     </div>
       
     

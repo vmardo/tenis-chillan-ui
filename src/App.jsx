@@ -10,6 +10,8 @@ import Raquetas from "./pages/productos/Raquetas"
 import Accesorios from "./pages/productos/Accesorios"
 import Ropa from "./pages/productos/Ropa"
 import ProductoDetalle from "./pages/productos/ProductoDetalle"
+import Carrito from "./pages/Carrito"
+
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
        <Route path="/productos/Accesorios" element= {<Accesorios/>} />
        <Route path="/productos/Ropa" element= {<Ropa/>} />
        <Route path="/productos/detalle" element= {<ProductoDetalle/>} />
+       <Route path="/carrito" element={ <Carrito/> }/>
       
       </Routes>
       {/* </div> */}
