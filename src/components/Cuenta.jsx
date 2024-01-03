@@ -1,14 +1,14 @@
 import { Typography } from "@material-tailwind/react"
 import EditarDatos from "./EditarDatos"
+import { useAuth } from "../context/authContext"
+
 function Cuenta() {
 
 
-    const usuario = {
-        nombre : "Juan",
-        correo : "juan@gmail.com",
-        rut: "12.567.678-5",
-        password: "Hola12345"
-    }
+
+    const {usuario} = useAuth();
+    
+
   return (
     <div>
         <div>
@@ -29,9 +29,13 @@ function Cuenta() {
         <Typography  variant="h2" color= "blue-gray" className="text-2xl my-5" uppercase  >
             {usuario.nombre}
         </Typography>
+        <Typography  variant="h2" color= "blue-gray" className="text-2xl my-5" uppercase  >
+            {usuario.email}
+        </Typography>
+
 
         <Typography  variant="h2" color= "blue-gray" className="text-2xl my-5" uppercase >
-            {usuario.rut}
+       
         </Typography>
 
         <EditarDatos></EditarDatos>

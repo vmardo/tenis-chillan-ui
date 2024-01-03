@@ -14,8 +14,15 @@ import {
 
 import Cuenta from "../../components/Cuenta";
 import Pedido from "../../components/Pedido";
+import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
  
  function Perfil() {
+
+  const {usuario} = useAuth();
+  const navigate = useNavigate();
+
   const data = [
     {
       label: "Pedidos",
@@ -31,6 +38,16 @@ import Pedido from "../../components/Pedido";
     },
     
   ];
+
+  //useEffect(() => !usuario && navigate("/"),[])
+    
+
+  if (!usuario) {
+    return (
+    <h1>Debes inciar sesion</h1>
+    )
+  }
+
   return (
     <Tabs value="dashboard">
       <TabsHeader>

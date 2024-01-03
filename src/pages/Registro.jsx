@@ -7,6 +7,7 @@ import {
   } from "@material-tailwind/react";
   import { NavLink,useNavigate } from "react-router-dom";
   import { useState } from "react";
+  import axios from "axios";
    
   export function Registro() {
    //aca inicializamos useState como un array vacio 
@@ -15,13 +16,17 @@ import {
 
       const [usuario, setUsuario] = useState({
           nombre: "",
-          correo: "",
+          email: "",
           password:""
       })
       //para dirreccionar al usuario al home
       const navigate = useNavigate();
       //creamos un useState de error
       const [error, setError] = useState();
+
+      //mensaje para registro con exito
+
+      const [exito, setExito] = useState();
 
       
 
@@ -36,16 +41,16 @@ import {
       
       }
       //preventDefault ---->para no perder los datos al momento de actualizar 
-      const registrarUsuario = (e)=> {
+      const registrarUsuario = async (e)=> {
         e.preventDefault();
         //reealizaremos validaciones
         console.log("tenemos que validar el objeto user:")
         console.log(usuario);
 
         //desenestructuramos el objeto para trabajar con las variables por separado
-        const {nombre,correo,password} = usuario;
+        const {nombre,email,password} = usuario;
         //vamos hacer que todos los campos sean obligatorios
-        if (!nombre  || !correo  || !password ) {
+        if (!nombre  || !email  || !password ) {
           setError("Todos los campos son obligatorios")
           //return es para que no se ejecute mas codigo
           return;
@@ -61,7 +66,37 @@ import {
         }
 
         console.log("registrando usuario...")
-        navigate("/home")
+
+        try {
+
+          //Llamar a API para registrar al usuario
+          //para utilizar el metodo post primero debemos enviar url (donde vamos manejar el registro),y una data
+          const respuesta = await axios.post("http://localhost:3000/auth/register",{
+            nombre,
+            email,
+            password
+          })
+
+          console.log(respuesta.status)
+          
+          const accessToken = respuesta.data.accessToken
+          //setItem es para guardar informacion : parametros ---> (nombre de la propiedad, lo que vamos ha guardar)
+          localStorage.setItem("token",accessToken);
+          setError(null);
+          setExito("Cuenta creada con exitosamente!")
+
+
+        } catch (error) {
+          setError(error.response.data.message)
+          setExito(null);
+
+        }
+
+        setTimeout(() => {
+        navigate("/")  
+        }, 5000);
+
+        
         //llamar a ruta encargada de registrar usuarios
 
       }
@@ -90,10 +125,10 @@ import {
               }}
             />
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Tu correo
+              Tu email
             </Typography>
             <Input
-              name="correo"
+              name="email"
               onChange={actualizarUsuario}
               size="lg"
               placeholder="name@mail.com"
@@ -124,7 +159,13 @@ import {
                   </Alert>
 
                 }
+                {
+                  exito && 
+                  <Alert color="green" className="my-4" variant="gradient">
+                    <span>{exito} </span>
+                  </Alert>
 
+                }
           <Button type="submit" className="mt-6" fullWidth>
             Registarse
           </Button>
