@@ -17,7 +17,7 @@ export const AuthProvider = ({children})=> {
 
             const respuesta = await axios.get("http://localhost:3000/usuarios/detalles",{
                 headers: {
-                    Authorization: "Bearer ${token}"
+                    Authorization:`Bearer ${token}`
                 }
             } ) 
             
@@ -30,17 +30,18 @@ export const AuthProvider = ({children})=> {
 
 
     }
-    useEffect( async() => {
-     async function getData (){
-        console.log("cambio en state de token")
-        if(token){
-            await guardarDatos ();
-        }
-     } 
-     getData();
-     
+    useEffect( () => {
+      
+        async function getData() {
+            console.log('cambio en state de token')
+            if(token){
+                await guardarDatos();
+            }
+          }
+
+        getData();
+
     }, [token])
-    
     
     
 
@@ -53,7 +54,7 @@ export const AuthProvider = ({children})=> {
 
     return (
         <AuthContext.Provider
-            value={{token,usuario,setToken,setToken,logout}}
+            value={{token,usuario,setToken,logout}}
          >
         {children}
         </AuthContext.Provider>

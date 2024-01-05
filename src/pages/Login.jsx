@@ -18,7 +18,7 @@ export function Login() {
   const [exito, setExito] = useState();
 
   const navigate = useNavigate();
-  const {guardarDatos} = useAuth();
+  const {setToken} = useAuth();
 //creamos un funcion para manejar el evento onSubmit
 
 const loginUsuario = async(e) => {
