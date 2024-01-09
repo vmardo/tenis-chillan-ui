@@ -12,6 +12,7 @@ import Ropa from "./pages/productos/Ropa"
 import ProductoDetalle from "./pages/productos/ProductoDetalle"
 import Carrito from "./pages/Carrito"
 import { AuthProvider } from "./context/authContext"
+import { CarritoProvider } from "./context/carritoContext"
 
 
 
@@ -19,6 +20,7 @@ function App() {
   
   return (
     <AuthProvider>
+      <CarritoProvider>
     <Router>
       <NavbarTenis/>
       {/* <div className="flex justify-center pt-6"> */}
@@ -38,6 +40,7 @@ function App() {
       </Routes>
       {/* </div> */}
     </Router>
+     </CarritoProvider>
     </AuthProvider>
   )
 }

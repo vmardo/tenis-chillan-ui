@@ -8,7 +8,7 @@ function ProductoDetalle() {
 
     console.log(state.producto)
     //desestructuramos las propiedades que necesitamos
-    const { nombre, url_imagen, precio_anterior, precio_actual, descripcion } = state.producto
+    const { nombre, url_imagen, porcentajeDescuento, precio_actual, descripcion } = state.producto
 
 
 
@@ -30,7 +30,7 @@ function ProductoDetalle() {
                         {nombre}
                     </Typography>
                     <p>SKU: FT04898</p>
-                    <p>${precio_anterior}</p>
+                    <p className="line-through">${parseInt(precio_actual/(1-porcentajeDescuento/100))}</p>
                     <p>${precio_actual}</p>
 
                     <Typography variant="h2" color="blue-gray" className="text-xl my-5" >
