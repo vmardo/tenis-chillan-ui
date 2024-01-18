@@ -15,7 +15,7 @@ export const AuthProvider = ({children})=> {
     const guardarDatos = async() => {
         try {
 
-            const respuesta = await axios.get("http://localhost:3000/usuarios/detalles",{
+            const respuesta = await axios.get("https://tenis-chillan-api-production.up.way.app/usuarios/detalles",{
                 headers: {
                     Authorization:`Bearer ${token}`
                 }

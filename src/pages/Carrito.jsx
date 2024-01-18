@@ -2,24 +2,65 @@ import { Typography, Button } from "@material-tailwind/react"
 import ProductoCarro from "../components/ProductoCarro" 
 import { useCarrito } from "../context/carritoContext"
 import { useEffect } from "react";
+import axios from 'axios';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 function Carrito() {
 
-    const {carrito,totalCarrito,vaciarCarrito} = useCarrito();
+    const navigate = useNavigate();
+
+    const { usuario, token } = useAuth();
+    const { carrito, totalCarrito, vaciarCarrito } = useCarrito();
 
 
-        useEffect(() => {
-            console.log(carrito)
-        },[])
+    useEffect(() => {
+        console.log(carrito)
+    }, [])
 
-        if(carrito.length < 1){
-            return (
-            <Typography variant='h2' color="black" className='text-center m-10'>
-                Tu carrito esta vacio 
-            </Typography>
+  if(carrito.length < 1){
+    return(
+        <Typography variant='h2' color="black" className='text-center mt-10'>
+            Tu carrito esta vacío
+        </Typography>
+    )
+  }
+
+  const createOrder = async () => {
+
+
+    try {
+        
+            const headers = {
+            Authorization: `Bearer ${token}`
+            }
+
+            const respuesta = await axios.post(
+                `https://tenis-chillan-api-production.up.way.app/pagos/create-order`, 
+                { carrito },
+                {headers}
             )
-        }
 
+        return respuesta.data.id;
+    } catch (error) {
+        console.error('Error al crear la orden:', error)
+        throw error;
+    }
+
+  }
+
+  const onApprove = async (data) => {
+    try {
+        const respuesta = await axios.post(`https://tenis-chillan-api-production.up.way.app/pagos/capture-order`, {
+            orderID: data.orderID
+        })
+        vaciarCarrito();
+        navigate('/orden-confirmada', { state: {  data: respuesta.data }  })
+    } catch (error) {
+        
+    }
+  }
 
   return (
     <div  className="w-4/5 mx-auto">
@@ -30,7 +71,7 @@ function Carrito() {
                 Tu carrito
             </Typography>
             <Typography variant='h3' color="black" className=''>
-                TOTAL (2 productos) $240.980
+                TOTAL  $ {`${totalCarrito}`}
             </Typography>
             <Typography variant='p' color="black" className=''>
                 Los artículos en tu carrito no están reservados. Termina el proceso de compra ahora para hacerte con ellos.
@@ -48,7 +89,6 @@ function Carrito() {
                     ) )
                 }
 
-        
             </div>
 
             {/*Div a la derecha con resumen y boton  */}
@@ -75,10 +115,29 @@ function Carrito() {
                         Total	
                     </Typography>
                     <Typography variant='p' color="black" className=''>
-                    $ {`${totalCarrito}`}
+                        $ {`${totalCarrito}`}
                     </Typography>
                 </div>
-                <Button color="amber">Finalizar compra</Button>
+                
+                {
+                    usuario ?
+                
+                    <PayPalScriptProvider options={{ clientId: "AfD9Kv-mqt0AdxltwKcXeVOw2jHhx9Ea09fGLfVRJgWkHHDQ-wOpLoxU2lF36ZKxSNVpZNdcGahUnvv3" }}>
+                    <PayPalButtons
+                        createOrder={createOrder}
+                        onApprove={onApprove}
+                    />
+                </PayPalScriptProvider>
+                :
+
+                <Typography variant='p' color="black" className=''>
+                    Debes iniciar sesión para continuar con el pago
+                </Typography>
+
+                }
+
+
+
             </div>
         </div>
         

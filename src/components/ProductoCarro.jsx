@@ -11,12 +11,7 @@ function ProductoCarro({producto}) {
 
     const [cantidadEditable, setCantidadEditable] = useState(cantidad)
 
-    useEffect(() => {
-         
-
-        agregarProducto(producto,1);
-    }, [cantidadEditable])
-
+    
 
     const editarCantidad = e => {
 

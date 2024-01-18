@@ -17,7 +17,7 @@ function Raquetas() {
   const consultarAPI = async () => {
     //simular consulta a api, esto es una operacion asincrona.
     try {
-      const respuesta = await axios.get("http://localhost:3000/productos/categoria/raquetas");
+      const respuesta = await axios.get("https://tenis-chillan-api-production.up.way.app/productos/categoria/raquetas");
       setRaquetas(respuesta.data);
     } catch (error) {
       console.error("Error al obtener productos;",error)

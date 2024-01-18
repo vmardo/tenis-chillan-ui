@@ -12,7 +12,7 @@ function Accesorios() {
     const consultarAPI = async () => {
       //simular consulta a api, esto es una operacion asincrona.
       try {
-        const respuesta = await axios.get("http://localhost:3000/productos/categoria/accesorios");
+        const respuesta = await axios.get("https://tenis-chillan-api-production.up.way.app/productos/categoria/accesorios");
         setAccesorios(respuesta.data);
       } catch (error) {
         console.error("Error al obtener productos;",error)

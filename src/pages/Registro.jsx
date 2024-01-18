@@ -8,11 +8,13 @@ import {
   import { NavLink,useNavigate } from "react-router-dom";
   import { useState } from "react";
   import axios from "axios";
+  import { useAuth } from "../context/authContext";
    
   export function Registro() {
    //aca inicializamos useState como un array vacio 
    //vamos hacer una propiedad por cada input y crearemos un objeto que contenga a los tres
    //la idea es ir llenando segun lo que vaya escribiendo el usuario para ello debemos utilizar los eventos
+      const {setToken} = useAuth();
 
       const [usuario, setUsuario] = useState({
           nombre: "",
@@ -71,7 +73,7 @@ import {
 
           //Llamar a API para registrar al usuario
           //para utilizar el metodo post primero debemos enviar url (donde vamos manejar el registro),y una data
-          const respuesta = await axios.post("http://localhost:3000/auth/register",{
+          const respuesta = await axios.post("https://tenis-chillan-api-production.up.railway.app/auth/register",{
             nombre,
             email,
             password
@@ -82,6 +84,7 @@ import {
           const accessToken = respuesta.data.accessToken
           //setItem es para guardar informacion : parametros ---> (nombre de la propiedad, lo que vamos ha guardar)
           localStorage.setItem("token",accessToken);
+          setToken(accessToken)
           setError(null);
           setExito("Cuenta creada con exitosamente!")
 
