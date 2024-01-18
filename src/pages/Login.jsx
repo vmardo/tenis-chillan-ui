@@ -26,7 +26,7 @@ const loginUsuario = async(e) => {
 
   try {
     //aca vamos guardar la respuesta que nos devuelva axios
-      const respuesta = await axios.post("https://tenis-chillan-api-production.up.way.app/auth/login",{
+      const respuesta = await axios.post("https://tenis-chillan-api-production.up.railway.app/auth/login",{
       email,
       password
   

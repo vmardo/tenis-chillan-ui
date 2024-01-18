@@ -37,7 +37,7 @@ function Carrito() {
             }
 
             const respuesta = await axios.post(
-                `https://tenis-chillan-api-production.up.way.app/pagos/create-order`, 
+                `https://tenis-chillan-api-production.up.railway.app/pagos/create-order`, 
                 { carrito },
                 {headers}
             )
@@ -52,7 +52,7 @@ function Carrito() {
 
   const onApprove = async (data) => {
     try {
-        const respuesta = await axios.post(`https://tenis-chillan-api-production.up.way.app/pagos/capture-order`, {
+        const respuesta = await axios.post(`https://tenis-chillan-api-production.up.railway.app/pagos/capture-order`, {
             orderID: data.orderID
         })
         vaciarCarrito();

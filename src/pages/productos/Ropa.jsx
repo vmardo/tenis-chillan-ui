@@ -11,7 +11,7 @@ function Ropa() {
     const consultarAPI = async () => {
       //simular consulta a api, esto es una operacion asincrona.
       try {
-        const respuesta = await axios.get("https://tenis-chillan-api-production.up.way.app/productos/categoria/ropa");
+        const respuesta = await axios.get("https://tenis-chillan-api-production.up.railway.app/productos/categoria/ropa");
         setRopa(respuesta.data);
       } catch (error) {
         console.error("Error al obtener productos;",error)
